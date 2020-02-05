@@ -1,0 +1,29 @@
+вы изменили два файла и хотите добавить их в разные коммиты, но случайно выполнили команду git add * и добавили в индекс оба. Как исключить из индекса один из них? Команда git status напомнит вам:
+
+$ git add .
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    renamed:    README.md -> README
+    modified:   CONTRIBUTING.md
+
+Прямо под текстом “Changes to be committed” говорится: используйте git reset HEAD <file>... для исключения из индекса. Давайте последуем этому совету и отменим индексирование файла CONTRIBUTING.md:
+
+$ git reset HEAD CONTRIBUTING.md
+Unstaged changes after reset:
+M	CONTRIBUTING.md
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    renamed:    README.md -> README
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   CONTRIBUTING.md
+
